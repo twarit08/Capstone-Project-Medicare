@@ -29,7 +29,10 @@ public class Product {
 	@NotBlank(message = "category cannot be blank")
 	private String category;
 	
-	@NotBlank(message = "disease cannot be blank")
+	@NotBlank(message = "description cannot be blank")
+	private String description;
+	
+	@NotBlank(message = "salt cannot be blank")
 	private String salt;
 	
 	@NotNull(message = "available cannot be null")
@@ -48,13 +51,14 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(Long pid, String name, String brand, String category, String salt, int totalAvailable, Double price,
+	public Product(Long pid, String name, String brand, String category,String description, String salt, int totalAvailable, Double price,
 			boolean isAvailable, ProductImage productImage) {
 		super();
 		this.pid = pid;
 		this.name = name;
 		this.brand = brand;
 		this.category = category;
+		this.description = description;
 		this.salt = salt;
 		this.totalAvailable = totalAvailable;
 		this.price = price;
@@ -115,4 +119,11 @@ public class Product {
 	public void setProductImage(ProductImage productImage) {
 		this.productImage = productImage;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 }

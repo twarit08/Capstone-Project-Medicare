@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.disable()
 			.authorizeRequests()
 			.antMatchers("/generate-token").permitAll()
-			.antMatchers("/user/signup").permitAll()
+			.antMatchers("/user/signup","/get/all-products","/get/products/**","/get/products-by-category/**","/get-product/**").permitAll()
 			.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and().exceptionHandling().authenticationEntryPoint(authEntryPoint)
