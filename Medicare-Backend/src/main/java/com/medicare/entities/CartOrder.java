@@ -3,24 +3,51 @@ package com.medicare.entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class CartOrder {
+	
+	@NotBlank
 	private String username;
+	
+	@NotBlank
 	private String firstName;
+	
+	@NotBlank
 	private String lastName;
+	
+	@NotBlank
 	private String address;
+	
+	@NotBlank
 	private String district;
+	
+	@NotNull
 	private int pinCode;
+	
+	@NotBlank
 	private String state;
+	
+	@NotBlank
 	private String contact;
-	private int paidAmount;
+	
+	@NotNull
+	private Double paidAmount;
+	
+	@NotBlank
 	private String paymentMode;
+	
+	@NotEmpty
 	private Set<CartItem> cartItem = new HashSet<>();
+	
 	public CartOrder() {
 		
 	}
 	
 	public CartOrder(String username, String firstName, String lastName, String address, String district, int pinCode,
-			String state, String contact, int paidAmount, String paymentMode, Set<CartItem> cartItem) {
+			String state, String contact, Double paidAmount, String paymentMode, Set<CartItem> cartItem) {
 		super();
 		this.username = username;
 		this.firstName = firstName;
@@ -92,10 +119,10 @@ public class CartOrder {
 		this.cartItem = cartItem;
 	}
 
-	public int getPaidAmount() {
+	public Double getPaidAmount() {
 		return paidAmount;
 	}
-	public void setPaidAmount(int paidAmount) {
+	public void setPaidAmount(Double paidAmount) {
 		this.paidAmount = paidAmount;
 	}
 	public String getPaymentMode() {

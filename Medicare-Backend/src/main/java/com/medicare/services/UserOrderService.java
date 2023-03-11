@@ -36,6 +36,11 @@ public class UserOrderService {
 		return orders;
 	}
 	
+	public UserOrder getOrderById(Long oid) {
+		UserOrder order = this.orderRepo.findById(oid).get();
+		return order;
+	}
+	
 	public void deleteOrder(Long oid) {
 		this.orderRepo.deleteById(oid);
 	}

@@ -26,7 +26,7 @@ public class UserOrder {
 	private String contact;
 	private String date;
 	private String status;
-	private int paidAmount;
+	private Double paidAmount;
 	private String paymentMode;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -37,7 +37,7 @@ public class UserOrder {
 	}
 	
 	public UserOrder(Long oid, String username, String firstName, String lastName, String address, String district,
-			int pinCode, String state, String contact, String date, String status, int paidAmount, String paymentMode,
+			int pinCode, String state, String contact, String date, String status, Double paidAmount, String paymentMode,
 			Set<ProductQuantity> products) {
 		super();
 		this.oid = oid;
@@ -133,10 +133,10 @@ public class UserOrder {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getPaidAmount() {
+	public Double getPaidAmount() {
 		return paidAmount;
 	}
-	public void setPaidAmount(int paidAmount) {
+	public void setPaidAmount(Double paidAmount) {
 		this.paidAmount = paidAmount;
 	}
 	public String getPaymentMode() {
