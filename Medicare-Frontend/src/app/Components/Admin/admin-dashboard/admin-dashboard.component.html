@@ -1,0 +1,56 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h3 class="text-justify">Welcome Admin: <span class="text-primary">{{name}}</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="offset-4">{{username}}</span></h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-deck">
+                        <div class="card bg-success">
+                            <img class="card-img-top" src="assets/Images/add-medicine.png" alt="add-medicine.png"
+                                style="width:100%; height:250px;">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">Add Medicine</h4>
+                                <p class="card-text">Add a new medicine to our store.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a routerLink="/admin/add-medicine" role="button" class="btn btn-warning btn-block">Add
+                                    Medicine</a>
+                            </div>
+                        </div>
+                        <div class="card bg-info">
+                            <img class="card-img-top" src="assets/Images/all-medicines.png" alt="all-medicines.png"
+                                style="width:100%; height:250px;">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">All Medicines</h4>
+                                <p class="card-text">Display all the medicine's in our store.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a routerLink="/admin/get/all/medicines" role="button"
+                                    class="btn btn-danger btn-block">Show All Medicines</a>
+                            </div>
+                        </div>
+                        <div class="card bg-secondary">
+                            <img class="card-img-top" src="assets/Images/order.png" alt="order.png"
+                                style="width:100%; height:250px;">
+                            <div class="card-body text-center">
+                                <h4 class="card-title">All Orders</h4>
+                                <p class="card-text">Display all the order's created by customers.</p>
+                            </div>
+                            <div class="card-footer">
+                                <a routerLink="/admin/all/user-orders" role="button" class="btn btn-dark btn-block">Show
+                                    All Orders</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

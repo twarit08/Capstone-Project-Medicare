@@ -1,0 +1,93 @@
+<br>
+<div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" routerLink="/get/all/medicines" (click)="onClick()">All Medicines</a>
+        <div class="dropdown dropright">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                Filter by
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" (click)="getProductByCategory('Anti Infectives')">Anti Infectives</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Anti Hypertensives')">Anti Hypertensives</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Anti Diabetic')">Anti Diabetics</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Gastro Intestinal')">Gastro Intestinal</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Urology')">Urology</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Gynaecological')">Gynaecological</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Analgesics')">Analgesics</a>
+                <a class="dropdown-item" (click)="getProductByCategory('Vitamins')">Vitamins</a>
+            </div>
+        </div>
+        <ul class="navbar-nav ml-auto mx-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Sort by
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" role="button" (click)="sortByPriceLowToHigh()">Price: Low To High</a>
+                    <a class="dropdown-item" role="button" (click)="sortByPriceHighToLow()">Price: High To Low</a>
+                    <a class="dropdown-item" role="button" (click)="sortByNameAscending()">Name: A-Z</a>
+                    <a class="dropdown-item" role="button" (click)="sortByNameDescending()">Name: Z-A</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline" (ngSubmit)="getProductByName()">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="medicineName"
+                name="medicineName">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="table-responsive">
+        <table class="table table-light table-bordered table-hover">
+            <thead class="thead-light text-center">
+                <tr>
+                    <th>Medicine Image</th>
+                    <th>Medicine Name</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Salt</th>
+                    <th>Unit Price(in &#8377;)</th>
+                    <th>Total Stock</th>
+                    <th>Action</th>
+                    <th>Activate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of product | paginate : 
+                                                {
+                                                    itemsPerPage: tableSize,
+                                                    currentPage: page,
+                                                    totalItems: count
+                                                }">
+                    <td>
+                        <img class="img-thumbnail" width="250" height="250" [src]="p.img">
+                    </td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.brand}}</td>
+                    <td>{{p.category}}</td>
+                    <td>{{p.salt}}</td>
+                    <td>&#8377; {{p.price}}</td>
+                    <td>{{p.totalAvailable}}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-success"
+                                (click)="updateProduct(p.pid)">Update</button>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteProduct(p.pid)">Delete</button>
+                        </div>
+                    </td>
+                    <td>
+                        <label class="switch">
+                            <input type="checkbox" name="available" [(ngModel)]="p.available"
+                                (change)="onActivate(p.pid,p)">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+    </div>
+</div>

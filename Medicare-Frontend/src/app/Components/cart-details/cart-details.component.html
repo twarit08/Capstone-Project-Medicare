@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+            <h3>Items in your cart({{totalQuantity}})</h3>
+            <div *ngIf="cartItems.length == 0">
+                <div class="col-6 offset-lg-6">
+                    <div class="alert alert-warning text-center"><strong>Your Cart is empty!</strong></div>
+                </div>
+            </div>
+            <div *ngIf="cartItems.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th [width]="150">
+                                Products
+                            </th>
+                            <th [width]="400"></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cartItems">
+                            <td>
+                                <img class="img-thumbnail" width="150" height="200" [src]="item.img">
+                            </td>
+                            <td>
+                                <h5>{{item.name}}</h5>
+                                <p class="text-muted">By {{item.brand}}</p>
+                                <p>MRP: <b>{{item.price | currency: 'INR'}}*</b></p>
+                            </td>
+                            <td><br><button class="btn btn-secondary btn-sm" (click)="increamentQuantity(item)"><i
+                                        class="fas fa-plus"></i></button>&nbsp;<b>{{item.quantity}}</b>&nbsp;<button
+                                    class="btn btn-secondary btn-sm" (click)="decrementQuantity(item)"><i
+                                        class="fas fa-minus"></i></button>
+                            </td>
+                            <td><br><button class="btn btn-danger btn-sm" (click)="removeItem(item)"><i
+                                        class="fas fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-md-12 ml-auto mt-5" *ngIf="cartItems.length > 0">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Order Summary <span class="text-muted">({{totalQuantity}} item)</span></h4>
+                </div>
+                <div class="card-body text-justify mx-auto">
+                    <p class="card-text">
+                        Total Quantity: &nbsp;&nbsp;{{totalQuantity}}
+                    </p>
+                    <p class="card-text">
+                        Delivery Charges: <span class="text-success">&nbsp;&nbsp;Free</span>
+                    </p>
+                    <p class="card-text font-weight-bold">
+                        <span class="text-info">Total Payable: &nbsp;&nbsp;{{totalPrice | currency: 'INR'}}</span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a routerLink="/user/create/order" role="button" class="btn btn-success btn-block">Proceed to Pay
+                        {{totalPrice | currency:
+                        'INR'}}</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

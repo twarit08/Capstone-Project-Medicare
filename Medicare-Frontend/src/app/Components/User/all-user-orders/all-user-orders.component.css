@@ -1,0 +1,8 @@
+table {
+    counter-reset: rowNumber;
+}
+
+table tr td:first-child::before {
+    counter-increment: rowNumber;
+    content: counter(rowNumber);
+}

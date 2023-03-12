@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 mx-auto mt-3 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">User Registration</h4>
+                </div>
+                <div class="card-body">
+                    <form #registerationForm="ngForm" (ngSubmit)="onSubmit()">
+
+                        <div class="form-group">
+                            <label for="username">Your E-mail:</label>
+                            <input type="email" class="form-control" required #username="ngModel"
+                                placeholder="Enter your E-mail address" id="username" name="username"
+                                [(ngModel)]="user.username" ngModel>
+                            <span *ngIf="username.invalid && username.touched" style="color: red">Please enter a valid
+                                e-mail.</span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Enter a Password:</label>
+                            <input type="password" required #password="ngModel" class="form-control"
+                                placeholder="Enter a password of minimum 6 characters." id="pwd" minlength="6"
+                                name="password" [(ngModel)]="user.password" ngModel>
+                            <span *ngIf="password.invalid && password.touched" style="color: red">Please enter valid
+                                password of minimum 6 characters.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="fname">First Name:</label>
+                            <input type="text" class="form-control" required #firstName="ngModel"
+                                placeholder="Enter your first name" id="fname" name="firstName"
+                                [(ngModel)]="user.firstName" ngModel>
+                            <span *ngIf="firstName.invalid && firstName.touched" style="color:red">Please enter valid
+                                first name.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name:</label>
+                            <input type="text" required #lastName="ngModel" class="form-control"
+                                placeholder="Enter your last name" id="lname" name="lastName"
+                                [(ngModel)]="user.lastName" ngModel>
+                            <span *ngIf="lastName.invalid && lastName.touched" style="color: red">Please enter valid
+                                last name.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phn">Contact no. :</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">+91</span>
+                                </div>
+                                <input type="text" required #phone="ngModel" class="form-control"
+                                    placeholder="Enter your phone number" id="phn" name="phone" minlength="10"
+                                    [(ngModel)]="user.contactNumber" ngModel>
+                            </div>
+                            <span *ngIf="phone.invalid && phone.touched" style="color:red">Please enter valid contact
+                                number</span>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary" [disabled]="registerationForm.invalid"
+                                    data-toggle="modal" data-target="#myModal">Sign Up</button>
+                                <!-- The Modal -->
+                                <div class="modal fade" id="myModal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">User Registration</h4>
+                                                <button type="button" class="close" (click)="onClick()"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <span *ngIf="isValid" style="color:green">{{message}}</span>
+                                                <span *ngIf="!isValid" style="color: red">{{message}}</span>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                    (click)="onClick()">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto mt-3 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">Update Medicine</h4>
+                </div>
+                <div class="card-body">
+                    <form #registerationForm="ngForm" (ngSubmit)="updateProduct()">
+
+                        <div class="form-group">
+                            <label for="mname">Medicine Name:</label>
+                            <input type="text" class="form-control" required #mname="ngModel"
+                                placeholder="Enter medicine name" id="mname" name="name" [(ngModel)]="product.name"
+                                ngModel>
+                            <span *ngIf="mname.invalid && mname.touched" style="color: red">Please enter a valid
+                                medicine name.</span>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="bname">Medicine Brand Name:</label>
+                            <input type="text" required #bname="ngModel" class="form-control"
+                                placeholder="Enter medicine brand name" id="bname" name="brand"
+                                [(ngModel)]="product.brand" ngModel>
+                            <span *ngIf="bname.invalid && bname.touched" style="color: red">Please enter a valid
+                                medicine brand .</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="mctg">Medicine Category:</label>
+                            <input type="text" class="form-control" required #mctg="ngModel"
+                                placeholder="Enter medicine category" id="mctg" name="category"
+                                [(ngModel)]="product.category" ngModel>
+                            <span *ngIf="mctg.invalid && mctg.touched" style="color:red">Please enter a valid
+                                medicine category.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Medicine Description:</label>
+                            <input type="text" class="form-control" required #desc="ngModel"
+                                placeholder="Enter medicine description" id="desc" name="description"
+                                [(ngModel)]="product.description" ngModel>
+                            <span *ngIf="desc.invalid && desc.touched" style="color:red">Please enter a valid
+                                medicine description.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="scomp">Salt Composition:</label>
+                            <input type="text" required #scomp="ngModel" class="form-control"
+                                placeholder="Enter medicine salt composition" id="scomp" name="salt"
+                                [(ngModel)]="product.salt" ngModel>
+                            <span *ngIf="scomp.invalid && scomp.touched" style="color: red">Please enter a valid
+                                salt name.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stk">Total Stock (In Strip):</label>
+                            <input type="number" required #stk="ngModel" class="form-control"
+                                placeholder="Enter total medicine stock" id="stk" name="totalAvailable"
+                                [(ngModel)]="product.totalAvailable" ngModel>
+                            <span *ngIf="stk.invalid && stk.touched" style="color: red">Please enter a valid
+                                total stock.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pc">Unit Price:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">&#8377;</span>
+                                </div>
+                                <input type="number" required #pc="ngModel" class="form-control"
+                                    placeholder="Enter medicine unit price" id="pc" name="price"
+                                    [(ngModel)]="product.price" ngModel>
+                            </div>
+                            <span *ngIf="pc.invalid && pc.touched" style="color: red">Please enter a valid
+                                unit price.</span>
+                        </div>
+
+                        <hr>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="registerationForm.invalid"
+                                data-toggle="modal" data-target="#myModal">Update Medicine</button>
+                            <!-- The Modal -->
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Update a medicine</h4>
+                                            <button type="button" class="close" (click)="onClick()"
+                                                data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <span *ngIf="isValid" style="color:green">{{message}}</span>
+                                            <span *ngIf="!isValid" style="color: red">{{message}}</span>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                (click)="onClick()">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

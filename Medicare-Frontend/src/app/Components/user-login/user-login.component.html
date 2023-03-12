@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-8 mx-auto">
+
+            <div class="card mt-5 bg-info">
+                <div class="card-body">
+                    <div class="text-center">
+                        <h4 class="card-title">Welcome User</h4>
+                        <p>Sign in to continue.</p>
+                    </div>
+                    <hr>
+                    <form #login="ngForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="email"><b>Username:</b></label> <input type="text" name="username"
+                                #username="ngModel" class="form-control" placeholder="Enter Username" id="email"
+                                [(ngModel)]="credentials.username" required ngModel>
+                            <span *ngIf="username.invalid && username.touched" style="color:red">Please enter a valid
+                                username.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd"><b>Password:</b></label> <input type="password" name="password"
+                                #password="ngModel" minlength="6" class="form-control" placeholder="Enter password"
+                                id="pwd" [(ngModel)]="credentials.password" required ngModel>
+                            <span *ngIf="password.invalid && password.touched" style="color: red">Please enter a valid
+                                password.</span>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block" [disabled]="login.invalid">Login</button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

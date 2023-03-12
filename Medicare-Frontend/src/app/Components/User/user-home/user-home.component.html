@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron jumbotron-fluid bg-secondary">
+                <div class="text-center text-white">
+                    <h1>Welcome {{name}} !</h1>
+                </div>
+            </div>
+            <div class="card-deck col-9 mx-auto mb-2">
+                <div class="card bg-success">
+                    <img class="card-img-top" src="assets/Images/cart.png" alt="cart.png"
+                        style="width:100%; height:250px;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Your Cart</h4>
+                        <p class="card-text">Display all the cart items.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a routerLink="/get/cart/details" role="button" class="btn btn-info btn-block">Go to Cart</a>
+                    </div>
+                </div>
+                <div class="card bg-success">
+                    <img class="card-img-top" src="assets/Images/order.png" alt="order.png"
+                        style="width:100%; height:250px;">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">All Orders</h4>
+                        <p class="card-text">Display all the order's placed.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-info btn-block" (click)="getOrders()">Show Orders</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

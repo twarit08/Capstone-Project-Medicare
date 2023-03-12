@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 mx-auto mt-2 mb-2">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h3 class="text-center font-weight-bold">Order Confirmation</h3>
+                    <p class="text-center">Dear <b>{{orderInvoice.firstName}} {{orderInvoice.lastName}}</b>, Thank you
+                        for shopping with us!</p>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-center"><b>Order Summary</b></h4>
+                    <p class="text-center">{{orderInvoice.date}}</p>
+
+                    <div class="card mx-auto">
+                        <div class="card-body">
+                            <p><b>Order Id: </b> {{orderInvoice.oid}} <span class="float-right"><b>Order Status:
+                                    </b>{{orderInvoice.status}}</span></p>
+                            <p>Ordered Products:</p>
+                            <div class="card flex-row mt-3 bg-light" *ngFor="let p of orderInvoice.products">
+                                <img [src]="p.product.img" class="card-img-left img-thumbnail" width="100" height="100">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{p.product.name}} <span
+                                            class="float-right text-muted">&#8377;
+                                            {{p.product.price * p.quantity}}</span></h4>
+                                    <p class="text-muted">By {{p.product.brand}} <span
+                                            class="text-dark float-right">Quantity:
+                                            {{p.quantity}}</span></p>
+                                </div>
+                            </div>
+
+                            <hr>
+                            <div class="text-center">
+                                <h5><b>Order Total: </b><span class="text-muted">{{orderInvoice.paidAmount |
+                                        currency:'INR'}}</span></h5>
+                                <p><b>Payment mode: </b>{{orderInvoice.paymentMode}}</p>
+                                <p><b>Total Amount Paid: </b>{{orderInvoice.paidAmount | currency:'INR'}}</p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <h5><b>Shipping details</b></h5>
+                                <p><b>Shipping address: </b>{{orderInvoice.address}}, {{orderInvoice.district}},
+                                    {{orderInvoice.pinCode}}, {{orderInvoice.state}}.</p>
+                                <p><b>Contact detail: </b>+91 {{orderInvoice.contact}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="card-footer">
+                    <h6 class="text-center">Your order is on it's way. Thank you!</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

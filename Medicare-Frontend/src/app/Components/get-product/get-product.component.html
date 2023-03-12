@@ -1,0 +1,55 @@
+<div>
+    <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+        <div class="col-6">
+            <input type="text" class="form-control" placeholder="Search medicine, health products and more..."
+                [(ngModel)]="name" (keydown.enter)="onSearch(name)">
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+
+            <br>
+            <span style="font-size: 1.5rem;">Products</span>
+            <span class="float-right mt-2"><a class="btn btn-light btn-sm dropdown-toggle" href="#"
+                    data-toggle="dropdown" role="button">
+                    Sort by
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" role="button" (click)="sortByPriceLowToHigh()">Price: Low To High</a>
+                    <a class="dropdown-item" role="button" (click)="sortByPriceHighToLow()">Price: High To Low</a>
+                    <a class="dropdown-item" role="button" (click)="sortByNameAscending()">Name: A-Z</a>
+                    <a class="dropdown-item" role="button" (click)="sortByNameDescending()">Name: Z-A</a>
+                </div>
+            </span>
+
+            <div class="card flex-row mt-3 bg-light" *ngFor="let p of product | paginate : 
+                                                                                {
+                                                                                    itemsPerPage: tableSize,
+                                                                                    currentPage: page,
+                                                                                    totalItems: count
+                                                                                }">
+                <img [src]="p.img" class="card-img-left img-thumbnail" width="200" height="200">
+                <div class="card-body">
+                    <h4 class="card-title">{{p.name}} <span class="float-right">&#8377; {{p.price}}</span></h4>
+                    <p class="text-muted">By {{p.brand}}</p>
+                    <small>Description: {{p.description}}</small>
+                    <br>
+                    <small>Contains: <span class="font-weight-bold">{{p.salt}}</span></small>
+                    <button class="btn btn-primary float-right mt-2" *ngIf="p.available" (click)="addToCart(p)">Add to
+                        cart</button>
+                    <button class="btn btn-secondary float-right mt-2" *ngIf="!p.available" disabled>Out of
+                        Stock</button>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
